@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amro Farag | Artificial Intelligence & Data Engineer Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            accent: '#6366f1',
+                            emerald: '#10b981'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white transition-colors duration-300">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-brand-accent to-emerald-400 p-0.5 shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform duration-300">
+                    <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-bold text-white tracking-wider text-sm">
+                        AF
+                    </div>
+                </div>
+                <div>
+                    <span class="text-lg font-bold tracking-tight text-slate-100 group-hover:text-brand-400 transition-colors">Amro Farag</span>
+                    <span class="block text-[10px] uppercase font-semibold tracking-wider text-brand-400">AI & Data Engineer</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800/80 shadow-inner">
+                <a href="#about" class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-full transition-all">About</a>
+                <a href="#skills" class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-full transition-all">Skills</a>
+                <a href="#projects" class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-full transition-all">Projects</a>
+                <a href="#experience" class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-full transition-all">Experience</a>
+                <a href="#certifications" class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-full transition-all">Certifications</a>
+                <a href="#contact" class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-full transition-all">Contact</a>
+            </nav>
+
+            <!-- Action Controls -->
+            <div class="flex items-center gap-3">
+                <!-- Theme Toggle Button -->
+                <button id="themeToggle" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 transition-all focus:outline-none" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-amber-400"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-indigo-600"></i>
+                </button>
+
+                <!-- Print CV Button -->
+                <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-brand-600 to-brand-accent hover:from-brand-500 hover:to-brand-600 text-white font-medium text-sm shadow-lg shadow-brand-500/20 hover:shadow-brand-500/30 hover:-translate-y-0.5 transition-all">
+                    <i data-lucide="printer" class="w-4 h-4"></i>
+                    <span>Print CV</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-950/95 backdrop-blur-xl border-b border-slate-800 px-6 py-6 transition-all duration-300">
+            <div class="flex flex-col gap-3">
+                <a href="#about" class="mobile-nav-link text-slate-300 hover:text-brand-400 font-medium py-2">About</a>
+                <a href="#skills" class="mobile-nav-link text-slate-300 hover:text-brand-400 font-medium py-2">Skills</a>
+                <a href="#projects" class="mobile-nav-link text-slate-300 hover:text-brand-400 font-medium py-2">Projects</a>
+                <a href="#experience" class="mobile-nav-link text-slate-300 hover:text-brand-400 font-medium py-2">Experience</a>
+                <a href="#certifications" class="mobile-nav-link text-slate-300 hover:text-brand-400 font-medium py-2">Certifications</a>
+                <a href="#contact" class="mobile-nav-link text-slate-300 hover:text-brand-400 font-medium py-2">Contact</a>
+                <button onclick="window.print()" class="w-full mt-2 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-brand-600 text-white font-medium text-sm">
+                    <i data-lucide="printer" class="w-4 h-4"></i> Print / Save PDF Resume
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="pt-20">
+
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-[90vh] flex items-center justify-center py-20 overflow-hidden">
+            <!-- Background Glow Effects -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-brand-600/20 via-brand-accent/20 to-emerald-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-brand-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                        <!-- Location & Status Badge -->
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300 shadow-sm backdrop-blur-sm">
+                            <span class="relative flex h-2 w-2">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            <span>Mansoura University | Expected Grad 2027</span>
+                            <span class="text-slate-600">|</span>
+                            <span class="flex items-center gap-1 text-slate-400"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-400"></i> Mansoura, Egypt</span>
+                        </div>
+
+                        <!-- Name & Title -->
+                        <div class="space-y-3">
+                            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
+                                AMRO <span class="bg-gradient-to-r from-brand-400 via-indigo-300 to-emerald-400 bg-clip-text text-transparent">FARAG</span>
+                            </h1>
+                            <h2 class="text-xl sm:text-2xl font-bold text-slate-300 tracking-wide">
+                                Artificial Intelligence & Data Engineer
+                            </h2>
+                        </div>
+
+                        <!-- Summary Brief -->
+                        <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Architecting enterprise-scale AutoML platforms, full-stack AI applications, deep learning computer vision models, and interactive Power BI dashboards. Driven by data, algorithms, and high-impact deployment.
+                        </p>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#projects" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-semibold text-sm shadow-xl shadow-brand-600/25 hover:shadow-brand-600/40 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                                <i data-lucide="sparkles" class="w-4 h-4"></i> Explore Projects
+                            </a>
+                            <a href="#contact" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-semibold text-sm hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                                <i data-lucide="mail" class="w-4 h-4 text-brand-400"></i> Contact Me
+                            </a>
+                        </div>
+
+                        <!-- Quick Contact Chips & Social Links -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-6 pt-4 text-slate-400 text-sm">
+                            <a href="mailto:amrooo.farag@gmail.com" class="flex items-center gap-2 hover:text-brand-400 transition-colors group">
+                                <div class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-brand-500/50">
+                                    <i data-lucide="mail" class="w-4 h-4 text-brand-400"></i>
+                                </div>
+                                <span class="font-mono text-xs">amrooo.farag@gmail.com</span>
+                            </a>
+
+                            <a href="https://github.com/amroofarag" target="_blank" class="flex items-center gap-2 hover:text-brand-400 transition-colors group">
+                                <div class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-brand-500/50">
+                                    <i data-lucide="github" class="w-4 h-4 text-slate-200"></i>
+                                </div>
+                                <span class="font-mono text-xs">@amroofarag</span>
+                            </a>
+
+                            <a href="https://linkedin.com" target="_blank" class="flex items-center gap-2 hover:text-brand-400 transition-colors group">
+                                <div class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-brand-500/50">
+                                    <i data-lucide="linkedin" class="w-4 h-4 text-sky-400"></i>
+                                </div>
+                                <span class="font-mono text-xs">LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero Stats & Card Visual -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-md">
+                            <!-- Card Container -->
+                            <div class="relative bg-slate-900/90 border border-slate-800 rounded-3xl p-6 shadow-2xl backdrop-blur-xl space-y-6">
+                                
+                                <!-- Card Header -->
+                                <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-600 flex items-center justify-center text-white font-extrabold text-xl shadow-md">
+                                            AI
+                                        </div>
+                                        <div>
+                                            <h3 class="font-bold text-white">LUMEN AutoML</h3>
+                                            <p class="text-xs text-brand-400">Graduation Project Highlight</p>
+                                        </div>
+                                    </div>
+                                    <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 uppercase tracking-wider">
+                                        Enterprise Grade
+                                    </span>
+                                </div>
+
+                                <!-- Key Highlights Metrics -->
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80">
+                                        <p class="text-xs text-slate-400 font-medium">Sales Data Processed</p>
+                                        <p class="text-2xl font-extrabold text-white mt-1">688K<span class="text-brand-400 text-lg">+</span></p>
+                                        <p class="text-[10px] text-slate-500 mt-0.5">Power BI BI Dashboards</p>
+                                    </div>
+                                    <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80">
+                                        <p class="text-xs text-slate-400 font-medium">ITI Intensive Hours</p>
+                                        <p class="text-2xl font-extrabold text-white mt-1">90<span class="text-brand-accent text-lg">hrs</span></p>
+                                        <p class="text-[10px] text-slate-500 mt-0.5">AI & ML Foundations</p>
+                                    </div>
+                                    <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80">
+                                        <p class="text-xs text-slate-400 font-medium">AutoML Tuning</p>
+                                        <p class="text-2xl font-extrabold text-white mt-1">Optuna</p>
+                                        <p class="text-[10px] text-slate-500 mt-0.5">Hyperparameter Opt.</p>
+                                    </div>
+                                    <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80">
+                                        <p class="text-xs text-slate-400 font-medium">Certifications</p>
+                                        <p class="text-2xl font-extrabold text-white mt-1">8<span class="text-emerald-400 text-lg">+</span></p>
+                                        <p class="text-[10px] text-slate-500 mt-0.5">NVIDIA, ITI, Cisco, Dubai</p>
+                                    </div>
+                                </div>
+
+                                <!-- Code Snippet Visual Widget -->
+                                <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 font-mono text-xs space-y-1 text-slate-300">
+                                    <div class="flex items-center justify-between text-[10px] text-slate-500 pb-1 mb-1 border-b border-slate-800/60">
+                                        <span>lumen_pipeline.py</span>
+                                        <span class="text-emerald-400">● Live Pipeline</span>
+                                    </div>
+                                    <p><span class="text-purple-400">from</span> lumen.engine <span class="text-purple-400">import</span> AutoMLEngine</p>
+                                    <p>engine = AutoMLEngine(backend=<span class="text-emerald-300">'PyTorch'</span>)</p>
+                                    <p>model = engine.optimize_hyperparams(study=<span class="text-emerald-300">'Optuna'</span>)</p>
+                                    <p><span class="text-brand-400">print</span>(<span class="text-emerald-300">"Deploying FastAPI & React App..."</span>)</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Professional Summary Section -->
+        <section id="about" class="py-20 bg-slate-900/40 border-y border-slate-800/80 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="px-3.5 py-1 rounded-full text-xs font-semibold bg-brand-500/10 text-brand-400 border border-brand-500/20 uppercase tracking-widest">
+                        Professional Overview
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">About Me</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">Combining theoretical AI engineering foundation with practical deployment experience.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Feature Card 1 -->
+                    <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl hover:border-brand-500/50 hover:-translate-y-1 transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-400 mb-4 group-hover:bg-brand-500 group-hover:text-white transition-all">
+                            <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Machine Learning & DL</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Expertise in building deep learning architectures, computer vision pipelines, and predictive algorithms using PyTorch and TensorFlow.</p>
+                    </div>
+
+                    <!-- Feature Card 2 -->
+                    <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl hover:border-brand-accent/50 hover:-translate-y-1 transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Enterprise AutoML</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Architecting automated ML platforms (LUMEN) covering data preprocessing, feature engineering, and hyperparameter optimization.</p>
+                    </div>
+
+                    <!-- Feature Card 3 -->
+                    <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                            <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Data & Analytics</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Designing interactive Power BI dashboards for 688K+ sales datasets, visualizing revenue trends, KPIs, and customer demographics.</p>
+                    </div>
+
+                    <!-- Feature Card 4 -->
+                    <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl hover:border-sky-500/50 hover:-translate-y-1 transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 mb-4 group-hover:bg-sky-500 group-hover:text-white transition-all">
+                            <i data-lucide="layers" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Full-Stack AI & Cloud</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Integrating FastAPI backends with React frontends, containerizing with Docker/Kubernetes, and deploying via CI/CD workflows.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section id="skills" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                    <span class="px-3.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-widest">
+                        Technical Stack
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Skills & Competencies</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">Comprehensive set of modern languages, frameworks, AI libraries, and data engineering tools.</p>
+                </div>
+
+                <!-- Skill Category Filter Buttons -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mb-10" id="skillFilters">
+                    <button data-filter="all" class="skill-filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-brand-600 text-white shadow-md transition-all">All Skills</button>
+                    <button data-filter="ai-ml" class="skill-filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-slate-900 text-slate-300 hover:text-white border border-slate-800 transition-all">AI & Deep Learning</button>
+                    <button data-filter="web-backend" class="skill-filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-slate-900 text-slate-300 hover:text-white border border-slate-800 transition-all">Web & Backend</button>
+                    <button data-filter="data-bi" class="skill-filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-slate-900 text-slate-300 hover:text-white border border-slate-800 transition-all">Data & Analytics</button>
+                    <button data-filter="devops-tools" class="skill-filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-slate-900 text-slate-300 hover:text-white border border-slate-800 transition-all">DevOps & Cloud</button>
+                </div>
+
+                <!-- Skills Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" id="skillsGrid">
+                    
+                    <!-- Languages -->
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="web-backend">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold">Py</div>
+                        <h4 class="font-bold text-white text-sm">Python</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Core & ML</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="web-backend">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold">C++</div>
+                        <h4 class="font-bold text-white text-sm">C++</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Algorithms</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="data-bi">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center font-bold">SQL</div>
+                        <h4 class="font-bold text-white text-sm">SQL</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Data Querying</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="data-bi">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold">R</div>
+                        <h4 class="font-bold text-white text-sm">R</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Statistics</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="web-backend">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center font-bold">JS</div>
+                        <h4 class="font-bold text-white text-sm">JavaScript</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Frontend Dev</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="web-backend">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-orange-500/10 text-orange-400 flex items-center justify-center font-bold">HTML</div>
+                        <h4 class="font-bold text-white text-sm">HTML/CSS</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">UI Styling</p>
+                    </div>
+
+                    <!-- AI & ML -->
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="ai-ml">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-orange-600/10 text-orange-500 flex items-center justify-center font-bold">PT</div>
+                        <h4 class="font-bold text-white text-sm">PyTorch</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Deep Learning</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="ai-ml">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-amber-600/10 text-amber-500 flex items-center justify-center font-bold">TF</div>
+                        <h4 class="font-bold text-white text-sm">TensorFlow</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Neural Networks</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="ai-ml">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-blue-600/10 text-blue-400 flex items-center justify-center font-bold">SK</div>
+                        <h4 class="font-bold text-white text-sm">Scikit-Learn</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Machine Learning</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="ai-ml">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">CV</div>
+                        <h4 class="font-bold text-white text-sm">OpenCV</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Computer Vision</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="ai-ml">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold">Pd</div>
+                        <h4 class="font-bold text-white text-sm">Pandas & NumPy</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Data Manipulation</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="ai-ml">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center font-bold">Opt</div>
+                        <h4 class="font-bold text-white text-sm">Optuna</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Hyperparam Tuning</p>
+                    </div>
+
+                    <!-- Web & Backend -->
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="web-backend">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-emerald-600/10 text-emerald-400 flex items-center justify-center font-bold">API</div>
+                        <h4 class="font-bold text-white text-sm">FastAPI</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Python REST APIs</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="web-backend">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold">React</div>
+                        <h4 class="font-bold text-white text-sm">React</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Modern Web Apps</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="web-backend">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center font-bold">St</div>
+                        <h4 class="font-bold text-white text-sm">Streamlit</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Interactive AI Dashboards</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="web-backend">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-green-500/10 text-green-400 flex items-center justify-center font-bold">Node</div>
+                        <h4 class="font-bold text-white text-sm">Node.js</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Server Runtime</p>
+                    </div>
+
+                    <!-- Data & BI -->
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="data-bi">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center font-bold">PBI</div>
+                        <h4 class="font-bold text-white text-sm">Power BI</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Sales & BI Analytics</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="data-bi">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-emerald-700/10 text-emerald-500 flex items-center justify-center font-bold">XLS</div>
+                        <h4 class="font-bold text-white text-sm">Advanced Excel</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Data Modeling</p>
+                    </div>
+
+                    <!-- DevOps & Tools -->
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="devops-tools">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-slate-500/10 text-slate-300 flex items-center justify-center font-bold">Git</div>
+                        <h4 class="font-bold text-white text-sm">Git & GitHub</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Version Control</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="devops-tools">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold">CI</div>
+                        <h4 class="font-bold text-white text-sm">GitHub Actions</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">CI/CD Automation</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="devops-tools">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-sky-600/10 text-sky-400 flex items-center justify-center font-bold">Doc</div>
+                        <h4 class="font-bold text-white text-sm">Docker</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Containerization</p>
+                    </div>
+
+                    <div class="skill-card bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl text-center hover:border-brand-500/40 hover:bg-slate-900 transition-all" data-category="devops-tools">
+                        <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-blue-600/10 text-blue-400 flex items-center justify-center font-bold">K8s</div>
+                        <h4 class="font-bold text-white text-sm">Kubernetes</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Orchestration</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section id="projects" class="py-20 bg-slate-900/40 border-y border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="px-3.5 py-1 rounded-full text-xs font-semibold bg-brand-500/10 text-brand-400 border border-brand-500/20 uppercase tracking-widest">
+                        Portfolio Highlights
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Featured AI & Data Projects</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">Real-world applications, AutoML platforms, and enterprise business intelligence solutions.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8">
+                    
+                    <!-- Project 1: LUMEN (Spotlight Graduation Project) -->
+                    <div class="bg-slate-900 border border-brand-500/30 rounded-3xl p-8 relative overflow-hidden shadow-2xl hover:border-brand-400 transition-all group">
+                        <!-- Top Accent Badge -->
+                        <div class="absolute top-0 right-0 bg-gradient-to-l from-brand-600 to-indigo-600 text-white text-[11px] font-extrabold px-4 py-1.5 rounded-bl-2xl uppercase tracking-wider shadow-md">
+                            🎓 Graduation Project
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-500 to-indigo-600 flex items-center justify-center text-white shadow-lg">
+                                <i data-lucide="cpu" class="w-8 h-8"></i>
+                            </div>
+
+                            <div>
+                                <h3 class="text-2xl font-bold text-white group-hover:text-brand-400 transition-colors flex items-center gap-3">
+                                    LUMEN
+                                    <span class="text-xs text-slate-400 font-normal hidden sm:inline">(Learning Unified Machine Learning for Enhanced aNalytics)</span>
+                                </h3>
+                                <p class="text-xs text-brand-400 font-mono mt-1">Enterprise-Scale AutoML Platform</p>
+                            </div>
+
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Architected a unified machine learning platform automating end-to-end pipelines: data preprocessing, feature engineering, multi-backend model selection, hyperparameter tuning with <strong>Optuna</strong>, and experiment tracking for enterprise analytics.
+                            </p>
+
+                            <!-- Tech Stack Pills -->
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-slate-300 border border-slate-800">Python</span>
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-slate-300 border border-slate-800">PyTorch</span>
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-slate-300 border border-slate-800">Scikit-Learn</span>
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-slate-300 border border-slate-800">Optuna</span>
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-slate-300 border border-slate-800">FastAPI</span>
+                            </div>
+
+                            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                                <span class="text-xs text-slate-400">Mansoura University • 2027</span>
+                                <a href="https://github.com/amroofarag" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-400 hover:text-brand-300">
+                                    <span>Explore Architecture</span>
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Sales Performance Power BI Dashboard -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 relative overflow-hidden shadow-xl hover:border-slate-700 transition-all group">
+                        <div class="space-y-6">
+                            <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shadow-md">
+                                <i data-lucide="bar-chart-2" class="w-8 h-8"></i>
+                            </div>
+
+                            <div>
+                                <h3 class="text-2xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                                    Sales Performance Power BI Dashboard
+                                </h3>
+                                <p class="text-xs text-amber-400 font-mono mt-1">688K+ Sales BI Analytics</p>
+                            </div>
+
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Designed an interactive business intelligence dashboard analyzing <strong>688K+ in total sales</strong> across diverse product categories and geographic regions. Visualized key performance indicators (KPIs), monthly revenue trends, category distributions, unit price analysis, and customer demographics.
+                            </p>
+
+                            <!-- Tech Stack Pills -->
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-amber-300 border border-slate-800">Power BI</span>
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-slate-300 border border-slate-800">DAX</span>
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-slate-300 border border-slate-800">Data Modeling</span>
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-slate-300 border border-slate-800">Advanced Excel</span>
+                            </div>
+
+                            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                                <span class="text-xs text-slate-400 font-mono">amroofarag-code/Sales-Performance-PowerBI-Dashboard</span>
+                                <a href="https://github.com/amroofarag-code/Sales-Performance-PowerBI-Dashboard" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 hover:text-amber-300">
+                                    <span>GitHub Repository</span>
+                                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Dastoor AI (دستور AI) -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 relative overflow-hidden shadow-xl hover:border-slate-700 transition-all group">
+                        <div class="space-y-6">
+                            <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 shadow-md">
+                                <i data-lucide="bot" class="w-8 h-8"></i>
+                            </div>
+
+                            <div>
+                                <h3 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors flex items-center justify-between">
+                                    <span>Dastoor AI <span class="font-arabic text-xl text-slate-400">(دستور AI)</span></span>
+                                </h3>
+                                <p class="text-xs text-indigo-400 font-mono mt-1">Live Web AI Application & CI/CD</p>
+                            </div>
+
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Built and deployed an interactive, web-based AI application hosted live via GitHub Pages. Integrated dynamic query processing UI with backend AI model pipelines and configured automated <strong>GitHub Actions CI/CD workflows</strong> for continuous build, validation, and deployment.
+                            </p>
+
+                            <!-- Tech Stack Pills -->
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-indigo-300 border border-slate-800">JavaScript</span>
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-slate-300 border border-slate-800">AI APIs</span>
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-slate-300 border border-slate-800">GitHub Actions</span>
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-slate-300 border border-slate-800">GitHub Pages</span>
+                            </div>
+
+                            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                                <span class="text-xs text-slate-400 font-mono">amroofarag-code/Dastoor-Ai</span>
+                                <a href="https://github.com/amroofarag-code/Dastoor-Ai" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-400 hover:text-indigo-300">
+                                    <span>GitHub Repository</span>
+                                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Full-Stack House Price Prediction App -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 relative overflow-hidden shadow-xl hover:border-slate-700 transition-all group">
+                        <div class="space-y-6">
+                            <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shadow-md">
+                                <i data-lucide="home" class="w-8 h-8"></i>
+                            </div>
+
+                            <div>
+                                <h3 class="text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+                                    Full-Stack House Price Prediction App
+                                </h3>
+                                <p class="text-xs text-emerald-400 font-mono mt-1">FastAPI + React ML System</p>
+                            </div>
+
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Developed a complete real estate price estimation system utilizing a high-performance <strong>FastAPI backend</strong>, modern <strong>React frontend</strong>, and trained <strong>Scikit-Learn</strong> predictive algorithms with real-time estimation features.
+                            </p>
+
+                            <!-- Tech Stack Pills -->
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-emerald-300 border border-slate-800">FastAPI</span>
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-slate-300 border border-slate-800">React</span>
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-slate-300 border border-slate-800">Scikit-Learn</span>
+                                <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-950 text-slate-300 border border-slate-800">REST API</span>
+                            </div>
+
+                            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                                <span class="text-xs text-slate-400 font-mono">Real Estate ML System</span>
+                                <a href="https://github.com/amroofarag" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300">
+                                    <span>View Profile</span>
+                                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Practical Experience & Internships -->
+        <section id="experience" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="px-3.5 py-1 rounded-full text-xs font-semibold bg-brand-accent/10 text-indigo-400 border border-indigo-500/20 uppercase tracking-widest">
+                        Career Path
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Practical Experience & Education</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">Hands-on industrial internships, intensive training, and academic background.</p>
+                </div>
+
+                <!-- Timeline Container -->
+                <div class="max-w-4xl mx-auto space-y-8 relative before:absolute before:inset-0 before:left-8 sm:before:left-1/2 before:-translate-x-px before:w-0.5 before:bg-slate-800">
+
+                    <!-- Timeline Item 1: CodeAlpha Internship -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full bg-brand-600 text-white shadow-lg shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                            <i data-lucide="briefcase" class="w-5 h-5"></i>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-xl hover:border-brand-500/40 transition-all">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold text-brand-400 uppercase tracking-wider">Aug 2026 – Sep 2026</span>
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-brand-500/10 text-brand-400 border border-brand-500/20">Internship</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Artificial Intelligence Intern</h3>
+                            <h4 class="text-sm font-semibold text-slate-300 mb-3">CodeAlpha</h4>
+                            <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside">
+                                <li>Developed and deployed AI models, gaining practical experience in machine learning algorithms, model evaluation, and software integration.</li>
+                                <li>Applied industry best practices in machine learning pipelines and automated testing.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2: ITI Trainee -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 text-white shadow-lg shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                            <i data-lucide="award" class="w-5 h-5"></i>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-xl hover:border-emerald-500/40 transition-all">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Aug 2026 – Sep 2026</span>
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">90 Intensive Hours</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">AI & Machine Learning Foundations Trainee</h3>
+                            <h4 class="text-sm font-semibold text-slate-300 mb-3">Information Technology Institute (ITI)</h4>
+                            <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside">
+                                <li>Completed comprehensive coursework covering Linear Algebra, Probability & Statistics for ML, Data Exploration, Neural Networks, and Deep Learning.</li>
+                                <li>Built and demonstrated a complete end-to-end Machine Learning pipeline project.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3: Mansoura University Education -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full bg-indigo-600 text-white shadow-lg shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-xl hover:border-indigo-500/40 transition-all">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider">Expected Grad: 2027</span>
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">B.Sc. Engineering</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Bachelor of Science in Artificial Intelligence Engineering</h3>
+                            <h4 class="text-sm font-semibold text-slate-300 mb-3">Faculty of Engineering, Mansoura University — Mansoura, Egypt</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Specializing in AI systems, automated machine learning, data engineering, and intelligent software design.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications & Initiatives Section -->
+        <section id="certifications" class="py-20 bg-slate-900/40 border-y border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="px-3.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase tracking-widest">
+                        Credentials
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Certifications & Global Initiatives</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">Professional certifications from leading international institutions and tech academies.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Cert 1 -->
+                    <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl hover:border-amber-500/40 transition-all space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold">
+                            <i data-lucide="sparkles" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Certified in Prompt Engineering</h3>
+                        <p class="text-xs text-amber-400 font-semibold">1 Million Prompters Initiative</p>
+                        <p class="text-slate-400 text-xs">Dubai Future Foundation</p>
+                    </div>
+
+                    <!-- Cert 2 -->
+                    <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl hover:border-emerald-500/40 transition-all space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
+                            <i data-lucide="shield-check" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base">AI & Machine Learning Foundations</h3>
+                        <p class="text-xs text-emerald-400 font-semibold">90 Intensive Hours</p>
+                        <p class="text-slate-400 text-xs">Information Technology Institute (ITI)</p>
+                    </div>
+
+                    <!-- Cert 3 -->
+                    <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl hover:border-emerald-500/40 transition-all space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
+                            <i data-lucide="cpu" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Getting Started with Deep Learning</h3>
+                        <p class="text-xs text-emerald-400 font-semibold">NVIDIA DLI Certificate</p>
+                        <p class="text-slate-400 text-xs">NVIDIA Deep Learning Institute</p>
+                    </div>
+
+                    <!-- Cert 4 -->
+                    <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl hover:border-sky-500/40 transition-all space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center font-bold">
+                            <i data-lucide="globe" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Introduction to Modern AI</h3>
+                        <p class="text-xs text-sky-400 font-semibold">Cisco Networking Academy</p>
+                        <p class="text-slate-400 text-xs">Nexus Tech Academy</p>
+                    </div>
+
+                    <!-- Cert 5 -->
+                    <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl hover:border-purple-500/40 transition-all space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold">
+                            <i data-lucide="bot" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Generative AI</h3>
+                        <p class="text-xs text-purple-400 font-semibold">Mahara-Tech</p>
+                        <p class="text-slate-400 text-xs">Information Technology Institute (ITI)</p>
+                    </div>
+
+                    <!-- Cert 6 -->
+                    <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl hover:border-blue-500/40 transition-all space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold">
+                            <i data-lucide="database" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Database Fundamentals</h3>
+                        <p class="text-xs text-blue-400 font-semibold">Mahara-Tech</p>
+                        <p class="text-slate-400 text-xs">Information Technology Institute (ITI)</p>
+                    </div>
+
+                    <!-- Cert 7 -->
+                    <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl hover:border-yellow-500/40 transition-all space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center font-bold">
+                            <i data-lucide="code" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Python Programming Basics</h3>
+                        <p class="text-xs text-yellow-400 font-semibold">Mahara-Tech</p>
+                        <p class="text-slate-400 text-xs">Information Technology Institute (ITI)</p>
+                    </div>
+
+                    <!-- Cert 8 -->
+                    <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl hover:border-cyan-500/40 transition-all space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold">
+                            <i data-lucide="eye" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Deep Learning & CV Specializations</h3>
+                        <p class="text-xs text-cyan-400 font-semibold">Kaggle Specializations</p>
+                        <p class="text-slate-400 text-xs">Kaggle Learning Platform</p>
+                    </div>
+
+                </div>
+
+                <!-- Conferences & Extracurriculars Banner -->
+                <div class="mt-12 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900 border border-slate-800 rounded-3xl p-8">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <i data-lucide="users" class="w-5 h-5 text-brand-400"></i>
+                        Conferences & Tech Summits (2026)
+                    </h3>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-800/80 flex items-center gap-3">
+                            <div class="w-3 h-3 rounded-full bg-brand-400"></div>
+                            <div>
+                                <p class="font-bold text-white text-sm">FDC Summit 2026</p>
+                                <p class="text-xs text-slate-400">Technology & Cybersecurity Summit Participant</p>
+                            </div>
+                        </div>
+                        <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-800/80 flex items-center gap-3">
+                            <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+                            <div>
+                                <p class="font-bold text-white text-sm">AI Catalyst 2026</p>
+                                <p class="text-xs text-slate-400">AI Technology Conference Participant</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="px-3.5 py-1 rounded-full text-xs font-semibold bg-brand-500/10 text-brand-400 border border-brand-500/20 uppercase tracking-widest">
+                        Get In Touch
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let's Connect & Collaborate</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">Open for AI Engineering roles, Data Science opportunities, and machine learning collaborations.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-10">
+                    
+                    <!-- Left Contact Info Cards -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-slate-400">Email Address</h4>
+                                <a href="mailto:amrooo.farag@gmail.com" class="text-white font-mono font-medium hover:text-brand-400 text-sm sm:text-base transition-colors">
+                                    amrooo.farag@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-slate-400">Location</h4>
+                                <p class="text-white font-medium text-sm sm:text-base">Mansoura, Egypt</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="github" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-slate-400">GitHub Handles</h4>
+                                <a href="https://github.com/amroofarag" target="_blank" class="block text-white font-mono hover:text-brand-400 text-xs sm:text-sm transition-colors">github.com/amroofarag</a>
+                                <a href="https://github.com/amroofarag-code" target="_blank" class="block text-slate-400 font-mono hover:text-brand-400 text-xs transition-colors mt-0.5">github.com/amroofarag-code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Interactive Form -->
+                    <div class="lg:col-span-7 bg-slate-900 border border-slate-800 p-8 rounded-3xl shadow-xl">
+                        <form id="contactForm" class="space-y-6">
+                            <div class="grid sm:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-xs font-semibold text-slate-300">Your Name</label>
+                                    <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-brand-500 transition-colors">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-semibold text-slate-300">Your Email</label>
+                                    <input type="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-brand-500 transition-colors">
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-xs font-semibold text-slate-300">Subject</label>
+                                <input type="text" required placeholder="AI Opportunity / Project Collaboration" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-brand-500 transition-colors">
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-xs font-semibold text-slate-300">Message</label>
+                                <textarea required rows="4" placeholder="Hello Amro, I would like to discuss..." class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-brand-500 transition-colors resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-sm shadow-xl shadow-brand-600/20 hover:shadow-brand-600/30 transition-all flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-4 h-4"></i> Send Message
+                            </button>
+                            <p id="formFeedback" class="text-center text-xs font-semibold hidden text-emerald-400 pt-2">
+                                ✓ Thank you! Your message simulation has been sent successfully.
+                            </p>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-10 text-slate-500 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 AMRO FARAG ABDELGAWWAD AHMED FOUDAH. All rights reserved.</p>
+            <div class="flex items-center gap-4">
+                <a href="https://github.com/amroofarag" target="_blank" class="hover:text-slate-300">GitHub</a>
+                <span>•</span>
+                <a href="mailto:amrooo.farag@gmail.com" class="hover:text-slate-300">Email</a>
+                <span>•</span>
+                <a href="#hero" class="hover:text-slate-300 flex items-center gap-1">Back to top <i data-lucide="arrow-up" class="w-3 h-3"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
